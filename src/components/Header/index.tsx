@@ -1,12 +1,13 @@
 import React, { FC } from "react";
-import { AppBar, IconButton, Toolbar, Typography } from "@mui/material";
+import { AppBar, IconButton, Toolbar, Box } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import ShoppingCart from "@mui/icons-material/ShoppingCart";
 
 import * as S from "./style";
 
 const Header: FC = () => {
   return (
-    <AppBar position="static">
+    <AppBar data-test-id="header" position="static">
       <Toolbar>
         <IconButton
           size="large"
@@ -17,10 +18,17 @@ const Header: FC = () => {
         >
           <MenuIcon />
         </IconButton>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          Accueil
-        </Typography>
-        <S.Logo src="/LOGO_POPCHEF_WHITE.svg" alt="POPCHEF - LOGO" />
+        <Box
+          flexGrow={1}
+          display="flex"
+          alignItems="center"
+          justifyContent="flex-start"
+        >
+          <S.Logo src="/LOGO_POPCHEF_WHITE.svg" alt="POPCHEF - LOGO" />
+        </Box>
+        <IconButton size="large" color="inherit" aria-label="cart">
+          <ShoppingCart />
+        </IconButton>
       </Toolbar>
     </AppBar>
   );
