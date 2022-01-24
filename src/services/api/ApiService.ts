@@ -1,6 +1,24 @@
 import axios, { AxiosRequestConfig } from "axios";
+import UrlJoin from "url-join";
+
+import type { Product } from "src/types";
 import { apiClient } from "./client";
 
+const API_ROUTES = {
+  PRODUCT: "/api/products",
+};
+
+export type CreateProductType = Pick<
+  Product,
+  "title" | "description" | "image_url" | "subtitle"
+>;
+
+export type UpdateProductType = {
+  id: Product["id"];
+  product: Partial<
+    Pick<Product, "title" | "description" | "image_url" | "subtitle">
+  >;
+};
 export class ApiService {
   config: AxiosRequestConfig = {};
 
@@ -27,5 +45,22 @@ export class ApiService {
    */
   getPaginatedProducts = (page: number, size: number) => {
     return apiClient.get("/api/products", { params: { page, size } });
+  };
+
+  createProduct = (product: CreateProductType) => {
+    return apiClient.put("/api/products", product);
+  };
+
+  updateProduct = (
+    id: Product["id"],
+    product: Partial<
+      Pick<Product, "title" | "description" | "image_url" | "subtitle">
+    >
+  ) => {
+    return apiClient.post(UrlJoin(API_ROUTES.PRODUCT, `${id}`), product);
+  };
+
+  deleteProduct = (id: Product["id"]) => {
+    return apiClient.delete(UrlJoin(API_ROUTES.PRODUCT, `${id}`));
   };
 }

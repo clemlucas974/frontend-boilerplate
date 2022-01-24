@@ -14,7 +14,13 @@ export type GetProductsReturn = {
     totalItems: number;
     totalPages: number;
   };
-  success: false;
+  success: boolean;
+};
+
+export type CreateProductReturn = {
+  code: number;
+  data: Product;
+  success: boolean;
 };
 
 export type ApiError = {

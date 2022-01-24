@@ -9,11 +9,10 @@ import { ApiError, GetProductsReturn } from "src/types";
  * Caching handled by react query
  */
 export const useGetProducts = () => {
-  const staffRequestService = ApiService.createInstance();
+  const apiService = ApiService.createInstance();
 
   return useQuery<GetProductsReturn, ApiError>(["GetProducts"], async () => {
-    const response: AxiosResponse =
-      await staffRequestService.getPaginatedProducts(0, 5);
+    const response: AxiosResponse = await apiService.getPaginatedProducts(0, 5);
     return response.data;
   });
 };
