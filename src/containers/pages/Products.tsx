@@ -6,32 +6,40 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Divider from "@mui/material/Divider";
-
-import type { Product } from "src/types";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
+import Skeleton from "@mui/material/Skeleton";
+import { Link } from "react-router-dom";
 
-const PRODUCTS: Product[] = [1, 2, 3].map((i) => ({
-  id: i,
-  title: "Title" + i,
-  subtitle: "subtitle",
-  description: "This is a description",
-  imageUrl:
-    "https://static.popchef.com/v2/products/hxTZIWf1YHtbRtNwwl5Y4S_wMiQ.jpeg",
-}));
+import { useGetProducts } from "src/services/api/react-query/queries/product";
+import ROUTES from "src/routes/constants";
 
 const Products: FC = () => {
+  const { isLoading, isFetching, data } = useGetProducts();
+
   return (
     <Container sx={{ py: 8 }}>
+      <Box>
+        <Link to={ROUTES.CREATE_PRODUCT}>
+          <Button>Add product</Button>
+        </Link>
+      </Box>
       <Grid container spacing={4}>
-        {PRODUCTS.map((product, i) => {
+        {isLoading || isFetching ? (
+          <Grid item xs={12} md={6}>
+            <Skeleton variant="rectangular" width="100%" height="100%" />
+          </Grid>
+        ) : (
+          <></>
+        )}
+        {(data?.data.rows || []).map((product) => {
           return (
             <Grid item key={`product-${product.id}`} xs={12} md={6}>
               <Card sx={{ display: "flex" }}>
                 <CardMedia
                   component="img"
                   sx={{ width: 250, display: { xs: "none", sm: "block" } }}
-                  image={product.imageUrl}
+                  image={product.image_url}
                   alt={product.title}
                 />
                 <Box
