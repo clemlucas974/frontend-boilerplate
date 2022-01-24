@@ -5,7 +5,7 @@ import React, {
   ChangeEventHandler,
 } from "react";
 import { Container, TextField, Stack, Button } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useCreateProduct } from "src/services/api/react-query/mutations/useCreateProduct";
 import ROUTES from "src/routes/constants";
@@ -30,7 +30,7 @@ const ProductCreate: FC = () => {
       });
 
       if (result.success) {
-        navigate(ROUTES.LIST_PRODUCT);
+        navigate(-1);
       }
     }
   };
@@ -66,8 +66,14 @@ const ProductCreate: FC = () => {
     });
   };
 
+  // TODO: Use of formik or react-hook-form
   return (
     <Container sx={{ py: 8 }}>
+      <Link to={ROUTES.LIST_PRODUCT}>
+        <Button sx={{ my: 2 }} variant="outlined">
+          Back
+        </Button>
+      </Link>
       <form autoComplete="off" onSubmit={handleSubmit}>
         <Stack spacing={2}>
           <TextField
