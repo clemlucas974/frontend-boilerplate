@@ -23,6 +23,17 @@ export type CreateProductReturn = {
   success: boolean;
 };
 
+export type UpdateProductReturn = {
+  code: number;
+  data: Product;
+  success: boolean;
+};
+
+export type DeleteProductReturn = {
+  code: number;
+  success: boolean;
+};
+
 export type ApiError = {
   code: number;
   errorMessage: string;

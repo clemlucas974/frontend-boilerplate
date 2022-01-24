@@ -51,13 +51,11 @@ export class ApiService {
     return apiClient.put("/api/products", product);
   };
 
-  updateProduct = (
-    id: Product["id"],
-    product: Partial<
-      Pick<Product, "title" | "description" | "image_url" | "subtitle">
-    >
-  ) => {
-    return apiClient.post(UrlJoin(API_ROUTES.PRODUCT, `${id}`), product);
+  updateProduct = (params: UpdateProductType) => {
+    return apiClient.post(
+      UrlJoin(API_ROUTES.PRODUCT, `${params.id}`),
+      params.product
+    );
   };
 
   deleteProduct = (id: Product["id"]) => {
