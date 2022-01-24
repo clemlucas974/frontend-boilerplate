@@ -7,7 +7,7 @@ import React, {
 import { Container, TextField, Stack, Button } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 
-import { useCreateProduct } from "src/services/api/react-query/mutations/useCreateProduct";
+import useCreateProduct from "src/services/api/react-query/mutations/product/useCreateProduct";
 import ROUTES from "src/routes/constants";
 import type { CreateProductType } from "src/services/api/ApiService";
 

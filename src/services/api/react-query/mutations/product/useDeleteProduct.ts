@@ -4,7 +4,7 @@ import { AxiosResponse } from "axios";
 import { ApiService } from "src/services/api/ApiService";
 import { ApiError, Product, DeleteProductReturn } from "src/types";
 
-export const useDeleteProduct = () => {
+const useDeleteProduct = () => {
   const apiService = ApiService.createInstance();
 
   return useMutation<DeleteProductReturn, ApiError, Product["id"]>(
@@ -14,3 +14,5 @@ export const useDeleteProduct = () => {
     }
   );
 };
+
+export default useDeleteProduct;

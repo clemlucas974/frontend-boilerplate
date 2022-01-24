@@ -5,7 +5,7 @@ import Grid from "@mui/material/Grid";
 import Skeleton from "@mui/material/Skeleton";
 import { Link } from "react-router-dom";
 
-import { useGetProducts } from "src/services/api/react-query/queries/product";
+import { useGetProducts } from "src/services/api/react-query/queries/product/useGetProducts";
 import ROUTES from "src/routes/constants";
 import ProductCard from "src/components/ProductCard";
 

@@ -9,8 +9,10 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 
 import { Product } from "src/types";
-import { useDeleteProduct } from "src/services/api/react-query/mutations/useDeleteProduct";
+import useDeleteProduct from "src/services/api/react-query/mutations/product/useDeleteProduct";
 import { useQueryClient } from "react-query";
+import ROUTES from "src/routes/constants";
+import { Link } from "react-router-dom";
 
 type Props = Product;
 
@@ -61,8 +63,9 @@ const ProductCard: FC<Props> = ({
             p: 2,
           }}
         >
-          <Button size="small">View</Button>
-          <Button size="small">Edit</Button>
+          <Link to={ROUTES.UPDATE_PRODUCT.replace(":id", id.toString())}>
+            <Button size="small">Edit</Button>
+          </Link>
           <Button size="small" onClick={handleDelete}>
             Delete
           </Button>

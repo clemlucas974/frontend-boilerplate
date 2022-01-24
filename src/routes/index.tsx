@@ -6,6 +6,7 @@ import Products from "src/containers/pages/Products";
 import ROUTES from "./constants";
 
 const ProductCreate = lazy(() => import("src/containers/pages/ProductCreate"));
+const ProductEdit = lazy(() => import("src/containers/pages/ProductEdit"));
 
 const AppRoutes = () => (
   <Routes>
@@ -22,6 +23,14 @@ const AppRoutes = () => (
       element={
         <Suspense fallback={<>...</>}>
           <ProductCreate />
+        </Suspense>
+      }
+    />
+    <Route
+      path={ROUTES.UPDATE_PRODUCT}
+      element={
+        <Suspense fallback={<>...</>}>
+          <ProductEdit />
         </Suspense>
       }
     />

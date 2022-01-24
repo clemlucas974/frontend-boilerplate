@@ -17,6 +17,12 @@ export type GetProductsReturn = {
   success: boolean;
 };
 
+export type GetProductReturn = {
+  code: number;
+  data: Product;
+  success: boolean;
+};
+
 export type CreateProductReturn = {
   code: number;
   data: Product;

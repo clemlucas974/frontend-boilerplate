@@ -4,7 +4,7 @@ import { AxiosResponse } from "axios";
 import { ApiService, UpdateProductType } from "src/services/api/ApiService";
 import { ApiError, UpdateProductReturn } from "src/types";
 
-export const useUpdateProduct = () => {
+const useUpdateProduct = () => {
   const apiService = ApiService.createInstance();
 
   return useMutation<UpdateProductReturn, ApiError, UpdateProductType>(
@@ -14,3 +14,5 @@ export const useUpdateProduct = () => {
     }
   );
 };
+
+export default useUpdateProduct;

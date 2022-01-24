@@ -44,11 +44,15 @@ export class ApiService {
    *  - size: number
    */
   getPaginatedProducts = (page: number, size: number) => {
-    return apiClient.get("/api/products", { params: { page, size } });
+    return apiClient.get(API_ROUTES.PRODUCT, { params: { page, size } });
+  };
+
+  getProductById = (id: Product["id"]) => {
+    return apiClient.get(UrlJoin(API_ROUTES.PRODUCT, id.toString(10)));
   };
 
   createProduct = (product: CreateProductType) => {
-    return apiClient.put("/api/products", product);
+    return apiClient.put(API_ROUTES.PRODUCT, product);
   };
 
   updateProduct = (params: UpdateProductType) => {
