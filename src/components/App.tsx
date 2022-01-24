@@ -4,6 +4,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 
 import theme from "src/ui/theme";
 import Header from "src/components/Header";
+import AppRoutes from "src/routes";
 
 function App() {
   return (
@@ -11,10 +12,9 @@ function App() {
       <CssBaseline />
       <Box sx={{ flexGrow: 1 }}>
         <Header />
-        <div className="app">
-          {/* HEADER */}
-          {/* BODY */}
-        </div>
+        <main>
+          <AppRoutes />
+        </main>
       </Box>
     </ThemeProvider>
   );
