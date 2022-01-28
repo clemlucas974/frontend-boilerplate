@@ -1,5 +1,3 @@
-![POP CHEF LOGO](./public/LOGO_POPCHEF.svg)
-
 # TECHNICAL TEST - FRONTEND
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -33,4 +31,4 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ## Deployment
 
-Project is automatically deploying to Heroku instance when pushing to main branch: https://clucas-popchef-frontend.herokuapp.com/
+Project is automatically deploying to Heroku instance when pushing to main branch
